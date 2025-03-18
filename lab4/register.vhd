@@ -26,7 +26,7 @@ begin
 
     process (clk)
     begin
-        elsif rising_edge(clk) then
+        if rising_edge(clk) then
             if rst = '1' then -- synchronouse reset (no needed to put it in the process barantices 
                 reg <= (others => '0');
             end if; 
@@ -39,6 +39,7 @@ begin
                     reg <= serial_in & reg(WIDTH-1 downto 1);  
                 end if;
             end if;
+        end if; 
     end process;
     
     data_out <= reg;  
